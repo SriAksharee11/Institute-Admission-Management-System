@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('/static/img/course.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .required {
+            color: red;
+            
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        h1{
+          font-style: inherit;
+          color: gray;
+          padding-left: 560px;
+
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 45%;
+            transform: translate(-30%, -30%);
+            padding: 50px;
+            background: rgba(135, 241, 253, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(11, 10, 10, 0.5);
+            z-index: 9999;
+            text-align: center;
+            color: black;
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <h1>Please enter valid information</h1>
+    <!--<a href="course.html"></a>-->
+  <form method="post" action="">
+    {% csrf_token %}
+      <div class="form-container">
+        <div class="form-group">
+            <label for="Username">Name <span class="required">*</span></label>
+            <input type="text" class="form-control" id="Username" name="Username" placeholder="Harry Potter">
+        </div>
+
+        <div class="form-group">
+            <label for="email">EMAIL<span class="required">*</span></label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="xxx@gmail.com">
+            
+
+            <label for="sslc">SSLC<span class="required">*</span></label>
+            <input type="text"  class="form-control" id="sslc" name="sslc" placeholder="sslc school name">
+            <label for="sslcmark">SSLCMARK<span class="required">*</span></label>
+            <input type="number" class="form-control" id="sslcmark" name="sslcmark" placeholder="Please enter your mark">
+            <label for="hscschool">HSC SCHOOL <span class="required">*</span></label>
+            <input type="text" class="form-control" id="hscschool" name="hscschool" placeholder="12 th school name">
+            <label for="hscmark">HSC MARK <span class="required">*</span></label>
+            <input type="number" class="form-control" id="hscmark" name="hscmark" placeholder="12 th mark">
+            <label for="marksheet">marksheet</label>
+            <input type="file" id="marksheet" name="marksheet">
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary"  onclick="showPopup()">Submit</button>
+        </div>
+    </div>
+   </form> 
+   <div id="popup">
+    <!-- Pop-up content goes here -->
+   
+    <p>Congratulations! Your form has been submitted successfully.Next Course Registration</p>
+    <button type="submit" class="btn btn-primary">ok</button>
+</div>
+   <!-- your_template.html -->
+
+   <script>
+    function showPopup() {
+        // Show the pop-up
+        document.getElementById('popup').style.display = 'block';
+
+
+    }
+</script>
+</body>
+</html>
+   

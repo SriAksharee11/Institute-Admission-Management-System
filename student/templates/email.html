@@ -1,0 +1,85 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rank List</h1>
+
+    <form id="markForm">
+        <label for="marks">Enter your marks:</label>
+        <input type="number" id="marks" name="marks" placeholder="Enter marks" required>
+        <button type="button" onclick="updateRankList()">Update Rank List</button>
+    </form>
+
+    <table id="rankTable">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody id="rankBody"></tbody>
+    </table>
+
+    <script>
+        var rankList = [];
+
+        function updateRankList() {
+            var marks = parseInt(document.getElementById("marks").value);
+            var user = "User " + (rankList.length + 1);
+
+            rankList.push({ user: user, marks: marks });
+            rankList.sort(function(a, b) {
+                return b.marks - a.marks; // Sort in descending order
+            });
+
+            displayRankList();
+        }
+
+        function displayRankList() {
+            var rankBody = document.getElementById("rankBody");
+            rankBody.innerHTML = "";
+
+            for (var i = 0; i < rankList.length; i++) {
+                var row = rankBody.insertRow(i);
+                var cellRank = row.insertCell(0);
+                var cellUser = row.insertCell(1);
+                var cellMarks = row.insertCell(2);
+
+                cellRank.innerHTML = i + 1;
+                cellUser.innerHTML = rankList[i].user;
+                cellMarks.innerHTML = rankList[i].marks;
+            }
+        }
+    </script>
+
+</body>
+</html>-->

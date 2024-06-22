@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload test</title>
+  <style>
+  .required
+  {
+      color: red;
+  }
+  #phone{
+    outline: 0;
+  }
+  /*#phone:valid{
+    border-color: green;
+  }*/
+  #phone:focus:invalid{
+    border-color: red;
+  }
+  
+  /*#email-error{
+    position: absolute;
+    top: 133%;
+    left: 15pc;
+    font-size: 16px;
+    font-weight: 400;
+    color: red;}*/
+ 
+  </style>
+</head>
+<body>
+    <div class="container-fluid px-0 mb-3">
+  <img src="/static/img/header.png" class="d-block w-100 mx-0" alt="...">
+</div>
+<div class="container  mb-3 py-4">
+  <h1 style="position: absolute;
+           top: 100px;
+           left: 666px;"></h1>
+  <form method="post" enctype="multipart/form-data" action="/contact">
+   
+    {% csrf_token %}
+    <div class="form-group">
+      <lable for="name" style="font-size: 20px;">Name</label> <span class="required">*</span>
+        <input type="text" class="form-control" id="name" name="name" placeholder="As per 10th marksheet">
+    </div>
+
+    <div class="form-group">
+      <lable for="father" style="font-size: 20px;">Father name</label> <span class="required">*</span>
+        <input type="text" class="form-control" id="father" name="father" placeholder="Harry Potter">
+    </div>
+
+    <div class="form-group">
+      <lable for="mother" style="font-size: 20px;">Mother name</label> <span class="required">*</span>
+        <input type="text" class="form-control" id="mother" name="mother" placeholder="Merry Potter">
+    </div>
+    <label for="gender" style="font-size: 20px;">Gender:</label>
+    <select name="gender" id="gender" required>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="O">Other</option>
+    </select><br>
+    <label for="religion"style="font-size: 20px;">Religion:</label>
+    <select name="religion" id="religion" required>
+        <option value="hinduism">hinduism</option>
+        <option value="Christian">christianity</option>
+        <option value="islam">Islam</option>
+        <option value="buddhism">buddhism</option>
+
+        <option value="other">Other</option>
+    </select>
+    <div class="form-group">
+      <label for="email"  style="font-size: 20px;">Email address</label> <span class="required">*</span>
+      <input type="email" class="form-control" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="name@example.com">
+    </div>
+
+    <div class="form-group">
+      <lable for="phone" style="font-size: 20px;">Contact Number</label> <span class="required">*</span>
+        <input type="tel" maxlength="12" class="form-control" id="phone" name="phone"  pattern="^(63||76||99)\d{8}$" placeholder="xxx-xxx-xxxx">
+    </div>
+
+    <div class="form-group">
+      <lable for="phone1" style="font-size: 20px;">Contact Number(Alternate)</label> <span class="required">*</span>
+        <input type="tel"maxlength="12"class="form-control" id="phone1" name="phone1" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"placeholder="Enter the Alternate Mobile Number">
+    </div>
+
+    <!--<div class="form-group">
+      <lable for="SSLC" style="font-size: 20px;"></label>SSLC <span class="required">*</span>
+        <input type="text" class="form-control" id="sslc" name="sslc" placeholder="Enter Your School name">
+    </div>
+
+    <div class="form-group">
+      <lable for="SSLCPercentile" style="font-size: 20px;">SSLC Percentile</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="sslcpercentile" name="sslcpercentile" placeholder="Enter the Percentile">
+    </div>
+
+    <!--<div class="form-group">
+      <lable for="HSCSCHOOLNAME" style="font-size: 20px;">HSC SCHOOL</label> <span class="required">*</span>
+        <input type="text" class="form-control" id="hscschoolname" name="hscschoolname" placeholder="Enter the Rank">
+    </div>-->
+
+    <!--<div class="form-group">
+      <lable for="Percentage" style="font-size: 20px;">12th Percentage</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="hscpercentage" name="hscpercentage" placeholder="Enter the 12th Percentage">
+    </div>-->
+    <!--<div class="form-group">
+      <lable for="JeeAppNo" style="font-size: 20px;">JEE Application Number</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="jeeappno" name="jeeappno" placeholder="Enter the Application Number">
+    </div>-->
+
+    <!--<div class="form-group">
+      <lable for="JeePercentile" style="font-size: 20px;">JEE Percentile</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="JeePercentile" name="JeePercentile" placeholder="Enter the Percentile">
+    </div>
+
+    <div class="form-group">
+      <lable for="JeeRank" style="font-size: 20px;">JEE Rank</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="JeeRank" name="JeeRank" placeholder="Enter the Rank">
+    </div>-->
+
+    <div class="form-group">
+      <label for="Address1" style="font-size: 20px;">Address(Permanent)</label> <span class="required">*</span>
+      <textarea class="form-control" id="Address1" rows="3" name="Address1"
+        placeholder="Enter the Permanent Address"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="Address2" style="font-size: 20px;">Address(Correspondance)</label> <span class="required">*</span>
+      <textarea class="form-control" id="Address2" rows="3" name="Address2"
+        placeholder="Enter the Correspondance Address"></textarea>
+    </div>
+
+    
+    
+    <div class="form-group">
+      <lable for="file" style="font-size: 20px;">MarkSheet</label> <span class="required">*</span>
+        <input type="file" class="form-control" id="file" name="file" placeholder="Please upload Certificate">
+    </div>
+
+    <!--<div class="form-group">
+      <lable for="file1" style="font-size: 20px;">Leaving Certificate</label> <span class="required">*</span>
+        <input type="file1" class="form-control" id="file1" name="file1" placeholder="Please upload Leaving Certificate">
+    </div>-->
+
+    <div class="form-group">
+      <lable for="Aadhar" style="font-size: 20px;">Aadhar</label> <span class="required">*</span>
+        <input type="number" class="form-control" id="Aadhar" name="Aadhar" min="12" max="12 "placeholder="Please Enter Valid Id">
+    </div>
+
+   
+    <div class="form-group">
+      <label for="desc" style="font-size: 20px;">Description</label> <span class="required">*</span>
+      <textarea class="form-control" id="desc" rows="3" name="desc"
+        placeholder="Tell me about what your Dream College"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+  </form>
+ 
+
+
+</div> 
+
+
+<!--<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<!--<script>
+  var btn=document.getElementById('btn');
+  btn.addEventListener('click', function(e){
+    e.preventDefault()
+    Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "email",
+    Password : "password",
+    To : 'them@website.com',
+    From : "you@isp.com",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);
+    })
+  })
+</script>-->
+  
+</body>
+</html>
+
+{% endblock body %}
